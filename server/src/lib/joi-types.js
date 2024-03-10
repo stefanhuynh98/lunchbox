@@ -9,3 +9,8 @@ export const RegisterBody = Joi.object({
 	username: Joi.string().alphanum().required(),
 	password: Joi.string().required(),
 });
+
+export const CreateRecipeBody = Joi.object({
+	name: Joi.string().required(),
+	ingredients: Joi.array(),
+});

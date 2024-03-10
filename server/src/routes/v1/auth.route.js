@@ -1,4 +1,4 @@
-import { Router, json } from 'express';
+import { Router } from 'express';
 import jwt from 'jsonwebtoken';
 import { validateBody } from '@/lib/middleware';
 import { LoginBody, RegisterBody } from '@/lib/joi-types';
@@ -23,7 +23,7 @@ r.post('/register', validateBody(RegisterBody), async (req, res, next) => {
 		});
 
 		const { insertId } = (await db.query('INSERT INTO users SET ?', { username, password: hash }))[0];
-		const token = await jwt.sign({ uid: insertId }, Bun.env['JWT_SECRET']);
+		const token = jwt.sign({ uid: insertId }, Bun.env['JWT_SECRET']);
 
 		res
 			.cookie('jwt', token, { httpOnly: true, secure: true })
@@ -47,7 +47,7 @@ r.post('/login', validateBody(LoginBody), async (req, res, next) => {
 
 		const isMatch = Bun.password.verify(password, users[0].password);
 		if (isMatch) {
-			const token = await jwt.sign({ uid: users[0].id }, Bun.env['JWT_SECRET']);
+			const token = jwt.sign({ uid: users[0].id }, Bun.env['JWT_SECRET']);
 			res
 				.cookie('jwt', token, { httpOnly: true, secure: true })
 				.status(200)
