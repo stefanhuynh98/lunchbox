@@ -7,8 +7,8 @@ const r = Router();
 
 r.get('/', authorize, async (req, res, next) => {
 	try {
-		const sql = 'SELECT * FROM recipes';
-		const recipes = (await db.query(sql))[0];
+		const sql = 'SELECT * FROM recipes WHERE user_id=?';
+		const recipes = (await db.query(sql, req.userId))[0];
 		res.json(recipes);
 	} catch (err) {
 		next(err);
