@@ -19,8 +19,8 @@ r.post('/', authorize, validateBody(CreateRecipeBody), async (req, res, next) =>
 	try {
 		if (req.body.ingredients?.length > 0) {
 			await db.execute('START TRANSACTION;');
-
-			const [insertRecipeResult] = await db.execute('INSERT INTO recipes (name, user_id) VALUES (?, ?);', [req.body.name, req.userId]);
+			const insertRecipeSql = 'INSERT INTO recipes (name, user_id) VALUES (?, ?);';
+			const [insertRecipeResult] = await db.execute(insertRecipeSql, [req.body.name, req.userId]);
 			const recipeId = insertRecipeResult.insertId;
 			const sql = 'INSERT INTO ingredients (food_id, recipe_id) VALUES (?, ?);';
 
