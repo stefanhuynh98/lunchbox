@@ -1,4 +1,5 @@
-import Joi from 'joi';
+const Joi = require('joi')
+    .extend(require('@joi/date'));
 
 export const LoginBody = Joi.object({
 	username: Joi.string().alphanum().required(),
@@ -24,4 +25,11 @@ export const CreateFoodBody = Joi.object({
 	sugars: Joi.number().required(),
 	salt: Joi.number(),
 	unit: Joi.string().valid('ml', 'g'),
+});
+
+export const CreateMealBody = Joi.object({
+	date: Joi.date().format('YYYY-MM-DD'),
+	user_id: Joi.number().required(),
+	recipe_id: Joi.number().required(),
+	meal_type: Joi.valid('breakfast', 'lunch', 'dinner').required(),
 });
