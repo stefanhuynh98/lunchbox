@@ -8,8 +8,8 @@
 	let password;
 	let error;
 
-	async function login() {
-		const result = await fetch('http://localhost:3000/v1/auth/login', {
+	async function register() {
+		const result = await fetch('http://localhost:3000/v1/auth/register', {
 			method: 'POST',
 			body: JSON.stringify({ username, password }),
 			credentials: 'include',
@@ -18,29 +18,25 @@
 			}
 		});
 
-		if (result.status === 200) {
+		if (result.status === 201) {
 			return goto('/');
 		}
 
 		const body = await result.json();
 
-		if (body.error === 'user_not_found') {
-			error = `User with username "${username}" could not be found.`;
-		}
-
-		if (body.error === 'invalid_credentials') {
-			error = 'Invalid credentials';
+		if (body.error === 'user_conflict') {
+			error = `A user with username "${username}" already exists.`
 		}
 	}
 </script>
 
 <main>
-	<h1>Login</h1>
+	<h1>Register</h1>
 	{#if error}
 		<Message variant="error" text={error}>
 		</Message>
 	{/if}
-	<form on:submit={login}>
+	<form on:submit={register}>
 		<Input
 			type="text"
 			placeholder="Username"
@@ -53,9 +49,15 @@
 			bind:value={password}
 			required
 		/>
-		<Button text="Login" />
-		<div class="register-text">
-			Don't have an account yet? Register <a href="/register">here</a>
+		<Input
+			type="password"
+			placeholder="Repeat password"
+			bind:value={password}
+			required
+		/>
+		<Button text="Register" />
+		<div class="login-text">
+			Already registered? Login <a href="/login">here</a>
 		</div>
 	</form>
 </main>
@@ -80,7 +82,7 @@
 		gap: 10px;
 	}
 
-	.register-text {
+	.login-text {
 		margin-top: 20px;
 		text-align: center;
 	}

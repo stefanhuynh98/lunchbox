@@ -45,7 +45,7 @@ r.post('/login', validateBody(LoginBody), async (req, res, next) => {
 				.json({ error: 'user_not_found' });
 		}
 
-		const isMatch = Bun.password.verify(password, users[0].password);
+		const isMatch = await Bun.password.verify(password, users[0].password);
 		if (isMatch) {
 			const token = jwt.sign({ uid: users[0].id }, Bun.env['JWT_SECRET']);
 			res

@@ -1,5 +1,5 @@
 <script>
-    import {onMount} from "svelte";
+	import {onMount} from "svelte";
 
 	let recipes = [];
 
@@ -11,11 +11,13 @@
 	});
 </script>
 
-Your recipes:
-{#each recipes as recipe, i}
-	<div>
-		{i+1}: {recipe.name}
-	</div>
+{#if recipes}
+	Your recipes:
+	{#each recipes as recipe, i}
+		<div>
+			{i+1}: {recipe.name}
+		</div>
+	{/each}
 {:else}
 	Loading...
-{/each}
+{/if}
