@@ -5,6 +5,7 @@ const pool = mysql.createPool({
 	user: Bun.env['DB_USER'],
 	password: Bun.env['DB_PASS'],
 	host: Bun.env['DB_HOST'],
+	dateStrings: true,
 });
 
 export default pool;

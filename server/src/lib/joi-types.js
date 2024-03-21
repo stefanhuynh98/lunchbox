@@ -33,3 +33,8 @@ export const CreateMealBody = Joi.object({
 	recipe_id: Joi.number().required(),
 	meal_type: Joi.valid('breakfast', 'lunch', 'dinner').required(),
 });
+
+export const DateQuery = Joi.object({
+	from: Joi.date().format('YYYY-MM-DD'),
+	to: Joi.date().format('YYYY-MM-DD'),
+});
