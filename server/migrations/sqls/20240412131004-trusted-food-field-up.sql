@@ -1,0 +1,2 @@
+ALTER TABLE foods
+ADD COLUMN trusted TINYINT(1) NOT NULL default 0;
