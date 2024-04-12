@@ -8,25 +8,17 @@
 		'friday',
 		'saturday',
 	];
+
+	export let data;
 </script>
 
-<h1>Schedule</h1>
-
-<div class="schedule">
-	{#each weekdays as weekday}
-		<div class="day">
-			{weekday}
-		</div>
-	{/each}
+<div class="container mx-auto px-4">
+	<h1>Schedule</h1>
+	<div class="grid grid-cols-7">
+		{#each weekdays as weekday}
+			<div class="">
+				{weekday}
+			</div>
+		{/each}
+	</div>
 </div>
-
-<style>
-	.schedule {
-		display: grid;
-		grid-template-columns: repeat(7, 1fr);
-	}
-
-	.day.today {
-		background-color: #FF000020;
-	}
-</style>
