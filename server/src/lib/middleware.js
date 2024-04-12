@@ -20,6 +20,9 @@ export function authorize(req, res, next) {
 	}
 }
 
+/**
+ * Validate a request's body according to a given Joi Schema.
+ */
 export function validateBody(schema) {
 	return async function(req, res, next) {
 		try {
@@ -31,6 +34,9 @@ export function validateBody(schema) {
 	}
 }
 
+/**
+ * Validate a request's query string according to a given Joi Schema.
+ */
 export function validateQuery(schema) {
 	return async function(req, res, next) {
 		try {
