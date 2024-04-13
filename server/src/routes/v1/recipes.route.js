@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import { authorize, validateBody } from '@/lib/middleware';
+import { validateBody } from '@/lib/middleware';
 import db from '@/lib/db';
 import { CreateRecipeBody } from '@/lib/joi-types';
 
 const r = Router();
 
-r.get('/', authorize, async (req, res, next) => {
+r.get('/', async (req, res, next) => {
 	try {
 		const sql = 'SELECT * FROM recipes WHERE user_id=?';
 		const recipes = (await db.query(sql, req.userId))[0];
@@ -15,7 +15,7 @@ r.get('/', authorize, async (req, res, next) => {
 	}
 });
 
-r.post('/', authorize, validateBody(CreateRecipeBody), async (req, res, next) => {
+r.post('/', validateBody(CreateRecipeBody), async (req, res, next) => {
 	try {
 		if (req.body.ingredients?.length > 0) {
 			await db.execute('START TRANSACTION;');

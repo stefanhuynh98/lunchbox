@@ -38,3 +38,9 @@ export const DateQuery = Joi.object({
 	from: Joi.date().format('YYYY-MM-DD'),
 	to: Joi.date().format('YYYY-MM-DD'),
 });
+
+export const Query = Joi.object({
+	query: Joi.string().optional().allow(null, ''),
+	page: Joi.number().optional(),
+	perPage: Joi.number().optional(),
+});

@@ -2,16 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-weight: normal;
+  src: url('/fonts/IBMPlexSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-weight: bold;
+  src: url('/fonts/IBMPlexSans-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-weight: normal;
+  src: url('/fonts/IBMPlexMono-Regular.ttf');
+}
+
 @layer components {
-	input {
-		@apply h-8 px-2 border border-black;
+	body { @apply
+		font-default
+		text-std;
 	}
 
-	form {
-		@apply flex flex-col gap-4;
+	h1 { @apply
+		text-xl
+		font-default;
 	}
 
-	form > div {
-		@apply flex flex-col;
+	h2 { @apply
+		text-xl
+		font-default;
+	}
+
+	input { @apply
+		h-[40px]
+		px-2
+		border
+		border-black
+		px-[11px]
+		bg-gray
+		border-0
+		focus:ring-[2px]
+		ring-primary;
+		placeholder:text-gray;
+		outline: 0 !important;
+	}
+
+	form { @apply
+		flex
+		flex-col
+		gap-8;
+	}
+
+	form > div { @apply
+		flex
+		flex-col;
+	}
+
+	a { @apply
+		underline
+		text-blue-900
+		font-default;
+		color: inherit;
 	}
 }

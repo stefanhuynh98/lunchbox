@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import { authorize, validateBody, validateQuery } from '@/lib/middleware';
+import { validateBody, validateQuery } from '@/lib/middleware';
 import { CreateMealBody, DateQuery } from '@/lib/joi-types';
 import db from '@/lib/db';
 
 const r = Router();
 
-r.get('/', authorize, validateQuery(DateQuery), async (req, res, next) => {
+r.get('/', validateQuery(DateQuery), async (req, res, next) => {
 	const { from, to } = req.query;
 	let sql = 'SELECT * FROM meals';
 
@@ -21,7 +21,7 @@ r.get('/', authorize, validateQuery(DateQuery), async (req, res, next) => {
 	res.json(meals);
 });
 
-r.post('/', authorize, validateBody(CreateMealBody), async (req, res, next) => {
+r.post('/', validateBody(CreateMealBody), async (req, res, next) => {
 	try {
 		await db.query('INSERT INTO meals SET ?', req.body);
 		res.sendStatus(201);

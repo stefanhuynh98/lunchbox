@@ -8,9 +8,9 @@ import { authorize } from '@/lib/middleware';
 const r = Router();
 
 r.use('/auth', auth);
-r.use('/recipes', recipes);
-r.use('/meals', meals);
-r.use('/foods', foods);
+r.use('/recipes', authorize, recipes);
+r.use('/meals', authorize, meals);
+r.use('/foods', authorize, foods);
 r.use('/ping', authorize, (req, res, next) => {
 	res.send('pong!');
 });

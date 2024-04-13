@@ -1,8 +1,6 @@
 <script>
 	import { goto } from '$app/navigation';
-	import Message from '$lib/Message.svelte';
-	import Button from '$lib/Button.svelte';
-	import Input from '$lib/Input.svelte';
+	import { Button, Input, Message } from '$ui';
 
 	let username;
 	let password;
@@ -34,11 +32,10 @@
 	}
 </script>
 
-<main>
-	<h1>Login</h1>
+<div class="w-[500px] mx-auto">
+	<h1 class="mb-8">Login</h1>
 	{#if error}
-		<Message variant="error" text={error}>
-		</Message>
+		<Message variant="error" text={error} />
 	{/if}
 	<form on:submit={login}>
 		<Input
@@ -53,35 +50,9 @@
 			bind:value={password}
 			required
 		/>
-		<Button text="Login" />
-		<div class="register-text">
-			Don't have an account yet? Register <a href="/register">here</a>
+		<Button>Login</Button>
+		<div class="block">
+			Don't have an account yet? Register <a class="inline" href="/register">here</a>
 		</div>
 	</form>
-</main>
-
-<style>
-	main {
-		width: 500px;
-		margin: 100px auto 0;
-		display: flex;
-		flex-direction: column;
-		gap: 20px;
-	}
-
-	h1 {
-		margin: 0;
-		text-align: center;
-	}
-
-	form {
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-	}
-
-	.register-text {
-		margin-top: 20px;
-		text-align: center;
-	}
-</style>
+</div>

@@ -1,16 +1,22 @@
 import { Router } from 'express';
-import { authorize, validateBody } from '@/lib/middleware';
-import db from '@/lib/db';
-import { CreateFoodBody } from '@/lib/joi-types';
+import { validateBody, validateQuery } from '@/lib/middleware';
+import db, { select } from '@/lib/db';
+import { CreateFoodBody, Query } from '@/lib/joi-types';
 
 const r = Router();
 
-r.get('/', async (req, res, next) => {
-	const [foods] = await db.query('SELECT * FROM foods');
-	res.json(foods);
+r.get('/', validateQuery(Query), async (req, res, next) => {
+	const { query, page, perPage } = req.query;
+	const args = { queryBy: 'name', orderBy: ['name', 'id'] };
+
+	if (page) args.offset = page-1 < 0 ? 0 : page-1;
+	if (perPage) args.limit = perPage;
+	if (query) args.query = query;
+
+	res.json(await select('foods', args));
 });
 
-r.post('/', authorize, validateBody(CreateFoodBody), async (req, res, next) => {
+r.post('/', validateBody(CreateFoodBody), async (req, res, next) => {
 	try {
 		const result = await db.query('INSERT INTO foods SET ?', req.body);
 		res.sendStatus(201);

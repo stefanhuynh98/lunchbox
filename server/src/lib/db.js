@@ -8,4 +8,27 @@ const pool = mysql.createPool({
 	dateStrings: true,
 });
 
+export async function select(table, {
+	offset = 0,
+	limit = 10,
+	orderBy = ['id'],
+	queryBy = null,
+	query = null,
+}) {
+	if (!table) return false;
+
+	const sql = `
+		SELECT * FROM ${table}
+		${query && queryBy ? `
+			WHERE ${queryBy}
+			LIKE '%${query}%'
+		` : ''}
+		ORDER BY ${orderBy.join?.() || orderBy}
+		LIMIT ${limit}
+		OFFSET ${offset}
+	`;
+
+	return (await pool.query(sql))[0];
+}
+
 export default pool;
