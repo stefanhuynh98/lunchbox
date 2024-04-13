@@ -5,3 +5,11 @@ export async function getFoods({ query, page, perPage }) {
 		credentials: 'include',
 	}).then(res => res.json());
 }
+
+export async function getRecipes({ query, page, perPage }) {
+	const params = new URLSearchParams({ query, page, perPage }).toString();
+
+	return await fetch(`http://localhost:3000/v1/recipes?${params}`, {
+		credentials: 'include',
+	}).then(res => res.json());
+}
