@@ -10,6 +10,7 @@ export default {
 			'std': 14,
 			'lg': 20,
 			'xl': 24,
+			'2xl': 32,
 			'xs': 12,
 		},
 		extend: {

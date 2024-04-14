@@ -23,7 +23,8 @@
 @layer components {
 	body { @apply
 		font-default
-		text-std;
+		text-std
+		overflow-hidden;
 	}
 
 	h1 { @apply
@@ -38,10 +39,9 @@
 
 	input { @apply
 		h-[40px]
-		px-2
+		px-4
 		border
 		border-black
-		px-[11px]
 		bg-gray
 		border-0
 		focus:ring-[2px]
@@ -59,6 +59,10 @@
 	form > div { @apply
 		flex
 		flex-col;
+	}
+
+	form input { @apply
+		w-full
 	}
 
 	a { @apply

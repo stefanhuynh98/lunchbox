@@ -1,6 +1,7 @@
 <script>
-	import { sideModal } from '$lib/stores';
+	import { modal } from '$lib/stores';
 	import { Button } from '$ui';
+	import { IngredientPicker } from '$ui/parts';
 
 	let name = '';
 	let ingredients = [];
@@ -14,10 +15,15 @@
 			},
 			body: JSON.stringify({
 				name,
-				ingredients,
+				ingredients: ingredients.map(ingredient => {
+					return {
+						food_id: ingredient.id,
+						amount: ingredient.amount,
+					}
+				}),
 			}),
 		});
-		$sideModal.form = false;
+		$modal.form = false;
 	}
 </script>
 
@@ -30,10 +36,11 @@
 		autofocus
 		required
 	/>
-	<input
-		type="search"
-	/>
-	<div class="grow items-start">
+	<div class="flex flex-col gap-4 w-full items-stretch">
+		<div class="font-bold">Add ingredients</div>
+		<IngredientPicker bind:ingredients />
+	</div>
+	<div class="grow items-start mt-[100px]">
 		<Button>Create recipe</Button>
 	</div>
 </form>

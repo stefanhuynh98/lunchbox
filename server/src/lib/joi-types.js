@@ -13,7 +13,10 @@ export const RegisterBody = Joi.object({
 
 export const CreateRecipeBody = Joi.object({
 	name: Joi.string().required(),
-	ingredients: Joi.array(),
+	ingredients: Joi.array().items({
+		food_id: Joi.number().required(),
+		amount: Joi.number().required(),
+	}),
 });
 
 export const CreateFoodBody = Joi.object({
@@ -41,6 +44,6 @@ export const DateQuery = Joi.object({
 
 export const Query = Joi.object({
 	query: Joi.string().optional().allow(null, ''),
-	page: Joi.number().optional(),
-	perPage: Joi.number().optional(),
+	page: Joi.number().optional().default(1),
+	perPage: Joi.number().optional().default(10),
 });

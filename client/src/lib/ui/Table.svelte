@@ -1,6 +1,8 @@
 <script>
 	export let columns = [];
 	export let rows = [];
+
+	console.log(rows);
 </script>
 
 {#if rows.length > 0}
@@ -11,9 +13,13 @@
 			{/each}
 		</tr>
 		{#each rows as row}
-			<tr class="even:bg-gray">
+			<tr class="even:bg-gray {row.url ? 'hover:bg-primary/20' : ''}">
 				{#each columns as column}
-					<td class="h-[44px] px-[17px] text-left">{row[column.name]}</td>
+					<td class="text-left">
+						<a class="h-[44px] px-[17px] flex items-center gap-2 no-underline hover:opacity:50" href={row.url}>
+							{@html row[column.name]}
+						</a>
+					</td>
 				{/each}
 			</tr>
 		{/each}

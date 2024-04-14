@@ -25,7 +25,7 @@ export function authorize(req, res, next) {
 export function validateBody(schema) {
 	return async function(req, res, next) {
 		try {
-			await schema.validateAsync(req.body);
+			req.body = await schema.validateAsync(req.body);
 			next();
 		} catch(err) {
 			next(err);
@@ -39,7 +39,7 @@ export function validateBody(schema) {
 export function validateQuery(schema) {
 	return async function(req, res, next) {
 		try {
-			await schema.validateAsync(req.query);
+			req.query = await schema.validateAsync(req.query);
 			next();
 		} catch(err) {
 			next(err);

@@ -1,5 +1,5 @@
 <script>
-	import { sideModal } from '$lib/stores';
+	import { modal } from '$lib/stores';
 	import { Button } from '$ui';
 
 	let name = '';
@@ -26,7 +26,7 @@
 				unit: 'g',
 			}),
 		});
-		$sideModal.form = false;
+		$modal.form = false;
 	}
 </script>
 

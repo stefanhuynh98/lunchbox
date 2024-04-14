@@ -42,13 +42,19 @@
 	});
 
 	async function refresh() {
-		foods = await getFoods({
+		foods = (await getFoods({
 			query,
 			page,
 			perPage,
 		}).then(res => {
 			searching = false;
 			return res;
+		})).map(food => {
+			if (food.trusted) {
+				food.name = `<img src="/badge-icon.svg" alt="trusted" /> ${food.name}`
+			}
+
+			return food;
 		});
 	}
 </script>

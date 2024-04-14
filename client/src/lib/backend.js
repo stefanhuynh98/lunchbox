@@ -1,4 +1,4 @@
-export async function getFoods({ query, page, perPage }) {
+export async function getFoods({ query, page = 1, perPage = 10 }) {
 	const params = new URLSearchParams({ query, page, perPage }).toString();
 
 	return await fetch(`http://localhost:3000/v1/foods?${params}`, {

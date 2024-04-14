@@ -1,6 +1,7 @@
 <script>
 	import { goto } from '$app/navigation';
-	import { Button, Input, Message } from '$ui';
+	import { Button, Message } from '$ui';
+	import { Input } from '$ui/input';
 
 	let username;
 	let password;

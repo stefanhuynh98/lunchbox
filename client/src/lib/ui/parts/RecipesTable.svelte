@@ -8,7 +8,27 @@
 		{
 			label: 'Name',
 			name: 'name',
-		}
+		},
+		{
+			label: 'Calories',
+			name: 'calories',
+		},
+		{
+			label: 'Fats',
+			name: 'fats',
+		},
+		{
+			label: 'Carbs',
+			name: 'carbs',
+		},
+		{
+			label: 'Protein',
+			name: 'protein',
+		},
+		{
+			label: 'Sugars',
+			name: 'sugars',
+		},
 	];
 
 	let query = '';
@@ -28,7 +48,10 @@
 			perPage,
 		}).then(res => {
 			searching = false;
-			return res;
+			return res.map(recipe => ({
+				...recipe,
+				url: `/recipes/${recipe.id}`
+			}));
 		});
 	}
 </script>
