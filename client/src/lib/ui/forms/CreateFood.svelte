@@ -1,4 +1,5 @@
 <script>
+	import { PUBLIC_BACKEND_URL } from '$env/static/public';
 	import { modal } from '$lib/stores';
 	import { Button } from '$ui';
 
@@ -10,7 +11,7 @@
 	let fats = null;
 
 	function onSubmit() {
-		const res = fetch('http://localhost:3000/v1/foods', {
+		const res = fetch(`${PUBLIC_BACKEND_URL}/v1/foods`, {
 			method: 'POST',
 			credentials: 'include',
 			headers: {

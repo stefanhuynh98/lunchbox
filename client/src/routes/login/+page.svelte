@@ -1,4 +1,5 @@
 <script>
+	import { PUBLIC_BACKEND_URL } from '$env/static/public';
 	import { goto } from '$app/navigation';
 	import { Button, Message } from '$ui';
 	import { Input } from '$ui/input';
@@ -8,7 +9,7 @@
 	let error;
 
 	async function login() {
-		const result = await fetch('http://localhost:3000/v1/auth/login', {
+		const result = await fetch(`${PUBLIC_BACKEND_URL}/v1/auth/login`, {
 			method: 'POST',
 			body: JSON.stringify({ username, password }),
 			credentials: 'include',

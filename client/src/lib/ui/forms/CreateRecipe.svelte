@@ -7,7 +7,7 @@
 	let ingredients = [];
 
 	function onSubmit() {
-		const res = fetch('http://localhost:3000/v1/recipes', {
+		const res = fetch(`${PUBLIC_BACKEND_URL}/v1/recipes`, {
 			method: 'POST',
 			credentials: 'include',
 			headers: {
