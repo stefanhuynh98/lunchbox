@@ -9,7 +9,7 @@ The server uses the bun runtime. See [bun.sh](bun.sh) for installation instructi
 ```bash
 bun i
 ```
-2. Pass the database credentials in /server/.env and provide a secret for JWT auth.
+2. Pass the database credentials in /server/.env and provide a JWT secret:
 ```bash
 DB_NAME=lunchbox
 DB_USER=admin
@@ -17,11 +17,12 @@ DB_PASS=admin
 DB_HOST=127.0.0.1
 JWT_SECRET=[SECRET HERE]
 ```
-3. Create a new MySQL database.
+3. Create the database you just named.
 4. Run migrations:
 ```bash
 bun migrate:up
 ```
+5. Run with `bun dev`
 
 ### Client
 
