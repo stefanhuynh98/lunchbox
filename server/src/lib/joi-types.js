@@ -38,8 +38,8 @@ export const CreateMealBody = Joi.object({
 });
 
 export const DateQuery = Joi.object({
-	from: Joi.date().format('YYYY-MM-DD'),
-	to: Joi.date().format('YYYY-MM-DD'),
+	from: Joi.date().iso(),
+	to: Joi.date().iso(),
 });
 
 export const Query = Joi.object({

@@ -4,6 +4,7 @@ import Icon from  './Icon.svelte';
 import Modal from  './Modal.svelte';
 import Table from './Table.svelte';
 import Message from './Message.svelte';
+import Stepper from './Stepper.svelte';
 
 export {
 	Navbar,
@@ -12,4 +13,5 @@ export {
 	Modal,
 	Table,
 	Message,
+	Stepper,
 };
