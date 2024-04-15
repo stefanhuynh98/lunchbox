@@ -1,4 +1,5 @@
 <script>
+	import { PUBLIC_BACKEND_URL } from '$env/static/public';
 	import { modal } from '$lib/stores';
 	import { Button } from '$ui';
 	import { IngredientPicker } from '$ui/parts';
