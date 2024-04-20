@@ -5,6 +5,7 @@ import Modal from  './Modal.svelte';
 import Table from './Table.svelte';
 import Message from './Message.svelte';
 import Stepper from './Stepper.svelte';
+import DateStepper from './DateStepper.svelte';
 
 export {
 	Navbar,
@@ -14,4 +15,5 @@ export {
 	Table,
 	Message,
 	Stepper,
+	DateStepper,
 };

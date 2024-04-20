@@ -1,8 +1,6 @@
 <script>
 	export let columns = [];
 	export let rows = [];
-
-	console.log(rows);
 </script>
 
 {#if rows.length > 0}

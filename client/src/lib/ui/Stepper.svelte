@@ -3,6 +3,7 @@
 
 	export let value = 0;
 	export let label = '';
+	export let width = 30;
 
 	let lastValue = value;
 	const initValue = value;
@@ -31,7 +32,8 @@
 		<img src="/arrow-down.svg" class="rotate-90 group-hover:invert" />
 	</div>
 	<div
-		class="w-[30px] h-full bg-gray text-xs font-mono cursor-pointer overflow-hidden"
+		style:width="{width}px"
+		class="h-full px-4 bg-gray text-xs font-mono cursor-pointer overflow-hidden"
 		on:click={reset}
 	>
 		{#key value}
