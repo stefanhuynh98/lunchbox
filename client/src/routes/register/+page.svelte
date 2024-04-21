@@ -32,7 +32,7 @@
 </script>
 
 <div class="w-[500px] mx-auto">
-	<h1 class="mb-8">Login</h1>
+	<h1 class="mb-8">Register</h1>
 	{#if error}
 		<Message variant="error" text={error} />
 	{/if}

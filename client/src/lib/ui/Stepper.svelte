@@ -1,55 +1,67 @@
 <script>
 	import { fly } from 'svelte/transition';
+	import { createEventDispatcher } from 'svelte';
 
-	export let value = 0;
-	export let label = '';
-	export let width = 30;
-
-	let lastValue = value;
-	const initValue = value;
-	const speed = 100;
+	export let label = null;
+	export let returnLabel = null;
+	export let counter = 0;
 
 	function increment() {
-		lastValue = value;
-		value++;
+		counter++;
+		dispatch('increment');
 	}
 
 	function decrement() {
-		lastValue = value;
-		value--;
+		counter--;
+		dispatch('decrement');
 	}
 
 	function reset() {
-		value = initValue;
+		counter = 0;
+		dispatch('reset');
 	}
+
+	const dispatch = createEventDispatcher();
 </script>
 
-<div class="inline-flex h-[30px] items-center gap-[1px]">
-	<div
-		class="group w-[30px] bg-gray h-full bg-gray hover:bg-primary cursor-pointer flex items-center justify-center"
+<div class="flex h-[40px] items-stretch gap-[1px] relative">
+	<button
+		class="group flex w-[40px] items-center justify-center bg-gray hover:bg-primary"
 		on:click={decrement}
 	>
-		<img src="/arrow-down.svg" class="rotate-90 group-hover:invert" />
-	</div>
-	<div
-		style:width="{width}px"
-		class="h-full px-4 bg-gray text-xs font-mono cursor-pointer overflow-hidden"
+		<img
+			src="/arrow-down.svg"
+			class="rotate-90 group-hover:invert"
+			alt="decrement"
+		/>
+	</button>
+	<button
+		class="w-[200px] h-full px-4 bg-gray text-xs"
 		on:click={reset}
 	>
-		{#key value}
-			<div
-				class="w-full h-full flex items-center justify-center"
-				in:fly={{ y: lastValue < value ? -30 : 30, duration: speed, delay: speed }}
-				out:fly={{ y: lastValue < value ? 30 : -30, duration: speed }}
-			> 
-				{label || value}
-			</div>
-		{/key}
-	</div>
-	<div
-		class="group w-[30px] bg-gray h-full bg-gray hover:bg-primary cursor-pointer flex items-center justify-center"
+		{label}
+	</button>
+	<button
+		class="group flex w-[40px] items-center justify-center bg-gray hover:bg-primary"
 		on:click={increment}
 	>
-		<img src="/arrow-down.svg" class="-rotate-90 group-hover:invert" />
+		<img
+			src="/arrow-down.svg"
+			class="-rotate-90 group-hover:invert"
+			alt="decrement"
+		/>
+	</button>
+	{#if returnLabel && counter !== 0}
+		<div
+			class="absolute flex justify-center w-full top-full mt-[3px] left"
+			
+		>
+			<button
+				class="text-xs hover:underline opacity-80"
+				on:click={reset}
+			>
+				{returnLabel}
+			</button>
 	</div>
-</div>
+	{/if}
+	</div>
