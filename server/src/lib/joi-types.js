@@ -37,9 +37,15 @@ export const CreateMealBody = Joi.object({
 	meal_type: Joi.valid('breakfast', 'lunch', 'dinner').required(),
 });
 
+export const EditMealBody = Joi.object({
+	date: Joi.date().format('YYYY-MM-DD'),
+	recipe_id: Joi.number(),
+	meal_type: Joi.valid('breakfast', 'lunch', 'dinner'),
+});
+
 export const DateQuery = Joi.object({
-	from: Joi.date().iso(),
-	to: Joi.date().iso(),
+	from: Joi.date(),
+	to: Joi.date(),
 });
 
 export const Query = Joi.object({

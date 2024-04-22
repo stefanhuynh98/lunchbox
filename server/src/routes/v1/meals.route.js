@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { validateBody, validateQuery } from '@/lib/middleware';
-import { CreateMealBody, DateQuery } from '@/lib/joi-types';
+import { CreateMealBody, EditMealBody, DateQuery } from '@/lib/joi-types';
 import db from '@/lib/db';
 
 const r = Router();
@@ -38,6 +38,30 @@ r.get('/', validateQuery(DateQuery), async (req, res, next) => {
 r.post('/', validateBody(CreateMealBody), async (req, res, next) => {
 	try {
 		await db.query('INSERT INTO meals SET ?', req.body);
+		res.sendStatus(201);
+	} catch (e) {
+		next(e);
+	}
+});
+
+r.patch('/:id', validateBody(EditMealBody), async (req, res, next) => {
+	try {
+		const stmt = ` UPDATE meals
+			SET
+				${'date' in req.body ? 'date=?, ' : ''}
+				${'meal_type' in req.body ? 'meal_type=?, ' : ''}
+				${'recipe_id' in req.body ? 'recipe_id=?' : ''}
+			WHERE id = ?;
+		`;
+
+		const params = [];
+
+		if ('date' in req.body) params.push(req.body.date.toISOString().split('T')[0]);
+		if ('meal_type' in req.body) params.push(req.body.meal_type);
+		if ('recipe_id' in req.body) params.push(req.body.recipe_id);
+
+		await db.execute(stmt, [...params, req.params.id]);
+
 		res.sendStatus(201);
 	} catch (e) {
 		next(e);
