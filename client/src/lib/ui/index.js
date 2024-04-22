@@ -6,6 +6,7 @@ import Table from './Table.svelte';
 import Message from './Message.svelte';
 import Stepper from './Stepper.svelte';
 import DateStepper from './DateStepper.svelte';
+import Meal from './Meal.svelte';
 
 export {
 	Navbar,
@@ -16,4 +17,5 @@ export {
 	Message,
 	Stepper,
 	DateStepper,
+	Meal,
 };

@@ -53,7 +53,6 @@
 			if (food.trusted) {
 				food.name = `<img src="/badge-icon.svg" alt="trusted" /> ${food.name}`
 			}
-
 			return food;
 		});
 	}

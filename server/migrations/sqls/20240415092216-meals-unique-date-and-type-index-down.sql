@@ -1,1 +1,1 @@
-ALTER TABLE meals DROP INDEX uidx_meal_date_and_type;
+ALTER TABLE meals DROP CONSTRAINT unique_meal_type_date;

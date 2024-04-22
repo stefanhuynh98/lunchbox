@@ -8,11 +8,11 @@
 		day: 'numeric',
 	};
 
-	$: firstDay = $page.data.week[0];
-	$: lastDay = $page.data.week[6];
+	$: firstDay = $page.data.week[0].day;
+	$: lastDay = $page.data.week[6].day;
 	$: weekLabel = `${firstDay.toLocaleDateString('nl-NL', dateOptions)} - ${lastDay.toLocaleDateString('nl-NL', dateOptions)}`;
-
-	let offset = getWeekOffset($page.data.week[0]);
+	
+	let offset = getWeekOffset($page.data.week[0].day);
 	let date = new Date(
 		$page.params.year,
 		$page.params.month-1,
@@ -35,6 +35,7 @@
 	}
 
 	function getWeekOffset(target) {
+
 		const today = new Date();
 		const msPerDay = 24 * 60 * 60 * 1000;
 		const msPerWeek = 7 * msPerDay;

@@ -1,1 +1,1 @@
-CREATE INDEX uidx_meal_date_and_type ON meals (meal_type, date);
+ALTER TABLE meals ADD CONSTRAINT unique_meal_type_date UNIQUE (meal_type, date);
