@@ -8,7 +8,7 @@
 	{#each data.week as { day, breakfast, lunch, dinner }}
 		<div class="flex flex-col gap-4">
 			{day.toLocaleDateString('nl-NL', { day: 'numeric', weekday: 'long' })}
-			<div class="flex gap-4 empty:border-[1px] empty:border-black/20 aspect-square">
+			<div class="flex gap-4 empty:border-[1px] empty:border-black/20 aspect-square items-center justify-center">
 				{#if breakfast}
 					<Meal {...breakfast} name={breakfast.recipe_name} />
 				{/if}
