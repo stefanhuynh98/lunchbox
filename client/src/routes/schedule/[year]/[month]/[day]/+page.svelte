@@ -8,21 +8,25 @@
 	{#each data.week as { day, breakfast, lunch, dinner }}
 		<div class="flex flex-col gap-4">
 			{day.toLocaleDateString('nl-NL', { day: 'numeric', weekday: 'long' })}
-			<div class="flex gap-4 empty:border-[1px] empty:border-black/20 aspect-square items-center justify-center">
-				{#if breakfast}
-					<Meal {...breakfast} name={breakfast.recipe_name} />
-				{/if}
-			</div>
-			<div class="flex gap-4 empty:border-[1px] empty:border-black/20 aspect-square">
-				{#if lunch}
-					<Meal {...lunch} name={lunch.recipe_name} />
-				{/if}
-			</div>
-			<div class="flex gap-4 empty:border-[1px] empty:border-black/20 aspect-square">
-				{#if dinner}
-					<Meal {...dinner} name={dinner.recipe_name} />
-				{/if}
-			</div>
 		</div>
+	{/each}
+	{#each ['breakfast', 'lunch', 'dinner'] as type}
+		{#each data.week as day}
+			{@const meal = day[type]}
+			{#if meal}
+				<Meal {...meal} name={meal.recipe_name} />
+			{:else}
+				<div class="
+					flex
+					gap-4
+					empty:border-[1px]
+					empty:border-black/20
+					aspect-square
+					items-center
+					justify-center
+					"
+				/>
+			{/if}
+		{/each}
 	{/each}
 </div>
