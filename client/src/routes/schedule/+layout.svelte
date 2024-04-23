@@ -35,7 +35,6 @@
 	}
 
 	function getWeekOffset(target) {
-
 		const today = new Date();
 		const msPerDay = 24 * 60 * 60 * 1000;
 		const msPerWeek = 7 * msPerDay;

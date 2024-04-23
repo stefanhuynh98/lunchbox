@@ -11,6 +11,7 @@ function findMeal(type, day) {
 export async function load({ params, url, fetch }) {
 	const { year, month, day } = params;
 	const date = new Date(Date.UTC(year, month-1, day));
+
 	let week = getWeek(date);
 	const from = week[0].toISOString();
 	const to = week[6].toISOString();
