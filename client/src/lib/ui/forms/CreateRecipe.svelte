@@ -1,14 +1,14 @@
 <script>
 	import { PUBLIC_BACKEND_URL } from '$env/static/public';
-	import { modal } from '$lib/stores';
+	import { modal, notification } from '$lib/stores';
 	import { Button } from '$ui';
 	import { IngredientPicker } from '$ui/parts';
 
 	let name = '';
 	let ingredients = [];
 
-	function onSubmit() {
-		const res = fetch(`${PUBLIC_BACKEND_URL}/v1/recipes`, {
+	async function onSubmit() {
+		const res = await fetch(`${PUBLIC_BACKEND_URL}/v1/recipes`, {
 			method: 'POST',
 			credentials: 'include',
 			headers: {
@@ -24,7 +24,13 @@
 				}),
 			}),
 		});
-		$modal.form = false;
+
+		if (res.status === 201) {
+			$notification = 'Recipe successfully created';
+			$modal.form = false;
+		} else {
+			$notification = 'Something went wrong';
+		}
 	}
 </script>
 

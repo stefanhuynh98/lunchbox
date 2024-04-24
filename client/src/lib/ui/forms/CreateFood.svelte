@@ -1,6 +1,6 @@
 <script>
 	import { PUBLIC_BACKEND_URL } from '$env/static/public';
-	import { modal } from '$lib/stores';
+	import { modal, notification } from '$lib/stores';
 	import { Button } from '$ui';
 
 	let name = '';
@@ -10,8 +10,8 @@
 	let sugars = null;
 	let fats = null;
 
-	function onSubmit() {
-		const res = fetch(`${PUBLIC_BACKEND_URL}/v1/foods`, {
+	async function onSubmit() {
+		const res = await fetch(`${PUBLIC_BACKEND_URL}/v1/foods`, {
 			method: 'POST',
 			credentials: 'include',
 			headers: {
@@ -27,7 +27,11 @@
 				unit: 'g',
 			}),
 		});
-		$modal.form = false;
+
+		if (res.status === 201) {
+			$notification = 'Created food entry successfully';
+			$modal.form = false;
+		}
 	}
 </script>
 

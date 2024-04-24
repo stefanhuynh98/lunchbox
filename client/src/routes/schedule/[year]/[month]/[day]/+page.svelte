@@ -4,9 +4,9 @@
 	export let data = {};
 </script>
 
-<div class="grid grid-cols-7 mt-8 gap-4">
+<div class="grid grid-cols-7 mt-8 gap-2">
 	{#each data.week as { day, breakfast, lunch, dinner }}
-		<div class="flex flex-col gap-4">
+		<div class="flex flex-col gap-2">
 			{day.toLocaleDateString('nl-NL', { day: 'numeric', weekday: 'long' })}
 		</div>
 	{/each}
@@ -14,7 +14,7 @@
 		{#each data.week as day}
 			{@const meal = day[type]}
 			{#if meal}
-				<Meal {...meal} name={meal.recipe_name} />
+				<Meal {...meal} />
 			{:else}
 				<div class="
 					flex

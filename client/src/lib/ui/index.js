@@ -7,6 +7,7 @@ import Message from './Message.svelte';
 import Stepper from './Stepper.svelte';
 import DateStepper from './DateStepper.svelte';
 import Meal from './Meal.svelte';
+import Notification from './Notification.svelte';
 
 export {
 	Navbar,
@@ -18,4 +19,5 @@ export {
 	Stepper,
 	DateStepper,
 	Meal,
+	Notification,
 };

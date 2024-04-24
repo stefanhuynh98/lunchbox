@@ -16,8 +16,8 @@ export async function getFoods({ query, page = 1, perPage = 10 }) {
 	}).then(res => res.json());
 }
 
-export async function getRecipes({ query, page, perPage }) {
-	const params = new URLSearchParams({ query, page, perPage }).toString();
+export async function getRecipes(params) {
+	params = new URLSearchParams(params).toString();
 
 	return await fetch(`${PUBLIC_BACKEND_URL}/v1/recipes?${params}`, {
 		credentials: 'include',
