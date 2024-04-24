@@ -39,19 +39,21 @@
 	{#if error}
 		<Message variant="error" text={error} />
 	{/if}
-	<form on:submit={login}>
-		<Input
-			type="text"
-			placeholder="Username"
-			bind:value={username}
-			required
-		/>
-		<Input
-			type="password"
-			placeholder="Password"
-			bind:value={password}
-			required
-		/>
+	<form on:submit={login} class="items-start">
+		<div class="w-full flex gap-4">
+			<Input
+				type="text"
+				placeholder="Username"
+				bind:value={username}
+				required
+			/>
+			<Input
+				type="password"
+				placeholder="Password"
+				bind:value={password}
+				required
+			/>
+		</div>
 		<Button>Login</Button>
 		<div class="block">
 			Don't have an account yet? Register <a class="inline" href="/register">here</a>
