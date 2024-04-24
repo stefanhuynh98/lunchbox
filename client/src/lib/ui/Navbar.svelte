@@ -20,7 +20,7 @@
 	];
 
 	$: route = $page.route.id;
-	$: curr = navItems.findIndex(item => item.url === route);
+	$: curr = navItems.findIndex(item => item.url === '/' + route.split('/')[1]);
 	$: cursorWidth = navItems[curr]?.ref?.clientWidth * .50;
 	$: cursorOffset = navItems[curr]?.ref?.offsetLeft + (((cursorWidth/50)*100) - cursorWidth) / 2;
 </script>
