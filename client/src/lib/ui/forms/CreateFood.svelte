@@ -30,7 +30,7 @@
 
 		if (res.status === 201) {
 			$notification = 'Created food entry successfully';
-			$modal.form = false;
+			$modal.content = false;
 		}
 	}
 </script>

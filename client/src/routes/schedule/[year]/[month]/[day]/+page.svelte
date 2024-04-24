@@ -1,13 +1,23 @@
 <script>
 	import { Meal } from '$ui';
 
+	const dayString = (day) => {
+		return day
+			.toLocaleDateString('nl-NL', { day: 'numeric', weekday: 'long' })
+			.slice(0, 1)
+			.toUpperCase() +
+		day
+			.toLocaleDateString('nl-NL', { day: 'numeric', weekday: 'long' })
+			.slice(1)
+	}
+
 	export let data = {};
 </script>
 
-<div class="grid grid-cols-7 mt-8 gap-2">
+<div class="grid grid-cols-7 mt-8 gap-4">
 	{#each data.week as { day, breakfast, lunch, dinner }}
-		<div class="flex flex-col gap-2">
-			{day.toLocaleDateString('nl-NL', { day: 'numeric', weekday: 'long' })}
+		<div class="flex flex-col gap-4">
+			{dayString(day)}
 		</div>
 	{/each}
 	{#each ['breakfast', 'lunch', 'dinner'] as type}

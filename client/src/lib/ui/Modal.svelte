@@ -9,10 +9,11 @@
 	export let store = null;
 </script>
 
-{#if $store.form} <div class="absolute left-0 right-0 top-0 bottom-0 flex justify-end items-start">
+{#if $store.content}
+	<div class="absolute left-0 right-0 top-0 bottom-0 flex justify-end items-start">
 		<div
 			class="absolute w-full h-full left-0 top-0 bg-black/40"
-			on:click={() => $store.form = false}
+			on:click={() => $store.content = false}
 			transition:blur={{ duration: speed, easing }}
 		/>
 		<div
@@ -20,7 +21,7 @@
 			transition:fly={{ x: 800, opacity: 1, duration: speed, easing }}
 		>
 			<div class="px-[2px] w-full h-full overflow-y-auto">
-				<svelte:component this={$store.form} />
+				<svelte:component this={$store.content} />
 			</div>
 		</div>
 	</div>

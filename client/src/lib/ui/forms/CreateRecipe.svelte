@@ -27,7 +27,7 @@
 
 		if (res.status === 201) {
 			$notification = 'Recipe successfully created';
-			$modal.form = false;
+			$modal.content = false;
 		} else {
 			$notification = 'Something went wrong';
 		}

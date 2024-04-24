@@ -22,7 +22,7 @@
 		});
 
 		if (res.status === 200) {
-			$modal.form = false;
+			$modal.content = false;
 			$notification = 'Changes to meal saved successfully';
 		}
 	}

@@ -1,6 +1,7 @@
 <script>
 	import { modal } from '$lib/stores';
 	import { EditMealForm } from '$ui/forms';
+	import { MealDetail } from '$ui/parts';
 
 	export let id = null;
 	export let recipe_id = null;
@@ -13,24 +14,25 @@
 	export let sugars = '';
 	export let meal_type = '';
 
-	function onEdit() {
+	function onClick() {
+		const d = new Date(date);
+
+		$modal.content = MealDetail;
 		$modal.context = {
 			id,
-			recipe_name,
-			recipe_id,
-			meal_type,
-			date,
+			date: d,
+			recipeName: recipe_name,
+			type: meal_type,
 		};
-		$modal.form = EditMealForm;
 	}
 </script>
 
 <div
-	class="flex flex-col w-full h-full p-3 bg-gray justify-between select-none cursor-pointer hover:opacity-80 hover:ring-1 ring-primary"
-	on:click={onEdit}
+	class="flex flex-col w-full h-full p-4 bg-gray justify-between select-none cursor-pointer hover:opacity-80 hover:ring-1 ring-primary text-sm"
+	on:click={onClick}
 >
-	<b class="text-xs">{recipe_name}</b>
-	<ul class="flex flex-col text-xs font-mono">
+	<b class="text-sm">{recipe_name}</b>
+	<ul class="flex flex-col font-mono">
 		<li>{calories}kcal</li>
 		<li>{protein}g protein</li>
 		<li>{carbs}g carbs</li>

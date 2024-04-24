@@ -22,7 +22,7 @@
 			{#each Object.entries(total) as [key, value]}
 				<div class="flex flex-col">
 					<b>{key}</b>
-					<div class="text-2xl">{value}</div>
+					<div class="text-2xl">{typeof value === 'number' ? value.toFixed() : value}</div>
 				</div>
 			{/each}
 		</div>

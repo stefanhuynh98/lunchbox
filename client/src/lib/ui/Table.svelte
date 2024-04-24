@@ -15,7 +15,7 @@
 				{#each columns as column}
 					<td class="text-left">
 						<a class="h-[44px] px-[17px] flex items-center gap-2 no-underline hover:opacity:50" href={row.url}>
-							{@html row[column.name]}
+							{@html row[column.name].toFixed?.() || row[column.name]}
 						</a>
 					</td>
 				{/each}

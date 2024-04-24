@@ -10,7 +10,7 @@
 		<h1 class="mb-[14px]">Recipes</h1>
 		<p>All your recipes in one place.</p>
 	</div>
-	<Button on:click={() => $modal.form = CreateRecipe}>Create new recipe</Button>
+	<Button on:click={() => $modal.content = CreateRecipe}>Create new recipe</Button>
 </div>
 
 <div class="flex flex-col items-start mt-[34px]">
