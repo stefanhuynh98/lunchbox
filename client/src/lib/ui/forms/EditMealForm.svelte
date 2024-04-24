@@ -30,7 +30,6 @@
 
 <form on:submit={onSubmit}>
 	<h2>Edit meal</h2>
-	<RecipePicker bind:recipe />
 	<div class="flex flex-col gap-2">
 		<label for="date">Date</label>
 		<input id="date" type="date" bind:value={date} />
