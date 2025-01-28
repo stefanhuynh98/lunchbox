@@ -1,27 +1,22 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
-
 	export let name = '';
 	export let value = null;
-	export let queryable = false;
 	export let options = null;
 
 	let focused = false;
-
-	const dispatch = createEventDispatcher();
 </script>
 
 <div class="w-full bg-gray h-[50px] relative select-none">
 	<div
 		on:click={() => focused = !focused}
-		class="w-full h-full cursor-pointer flex items-center px-4"
+		class="flex items-center w-full h-full px-4 cursor-pointer"
 	>
 		{#if value}
 			test
 		{:else}
 			<div class="opacity-50">Select {name}</div>
 		{/if}
-		<div class="absolute flex h-full top-0 right-5 items-center">
+		<div class="absolute top-0 flex items-center h-full right-5">
 			<img
 				src="/arrow-down.svg"
 				alt="select"

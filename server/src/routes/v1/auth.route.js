@@ -9,7 +9,7 @@ const r = Router();
 r.post('/register', validateBody(RegisterBody), async (req, res, next) => {
 	try {
 		const { username, password } = req.body;
-		const users = (await db.query('SELECT * FROM users WHERE username = ?', username))[0];
+		const [users] = await db.query('SELECT * FROM users WHERE username = ?', username);
 
 		if (users.length > 0) {
 			return res
@@ -22,7 +22,7 @@ r.post('/register', validateBody(RegisterBody), async (req, res, next) => {
 			cost: 10,
 		});
 
-		const { insertId } = (await db.query('INSERT INTO users SET ?', { username, password: hash }))[0];
+		const [{ insertId }] = await db.query('INSERT INTO users SET ?', { username, password: hash });
 		const token = jwt.sign({ uid: insertId }, Bun.env['JWT_SECRET']);
 
 		res
@@ -37,7 +37,7 @@ r.post('/register', validateBody(RegisterBody), async (req, res, next) => {
 r.post('/login', validateBody(LoginBody), async (req, res, next) => {
 	try {
 		const { username, password } = req.body;
-		const users = (await db.query('SELECT * FROM users WHERE username = ?', username))[0];
+		const [users] = await db.query('SELECT * FROM users WHERE username = ?', username);
 
 		if (users.length === 0) {
 			return res
@@ -46,6 +46,7 @@ r.post('/login', validateBody(LoginBody), async (req, res, next) => {
 		}
 
 		const isMatch = await Bun.password.verify(password, users[0].password);
+
 		if (isMatch) {
 			const token = jwt.sign({ uid: users[0].id }, Bun.env['JWT_SECRET']);
 			res

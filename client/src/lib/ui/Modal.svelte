@@ -10,9 +10,9 @@
 </script>
 
 {#if $store.content}
-	<div class="absolute left-0 right-0 top-0 bottom-0 flex justify-end items-start">
+	<div class="absolute top-0 bottom-0 left-0 right-0 flex items-start justify-end">
 		<div
-			class="absolute w-full h-full left-0 top-0 bg-black/40"
+			class="absolute top-0 left-0 w-full h-full bg-black/40"
 			on:click={() => $store.content = false}
 			transition:blur={{ duration: speed, easing }}
 		/>

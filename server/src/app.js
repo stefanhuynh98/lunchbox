@@ -17,7 +17,7 @@ app.use(cookieParser());
 app.use('/v1', routes.v1);
 
 // Error handler
-app.use((error, req, res, next) => {
+app.use((error, _req, res, _next) => {
 	console.log(error);
 
 	res

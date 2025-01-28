@@ -7,6 +7,7 @@
 
 	onMount(() => {
 		let timeout;
+
 		const unsubscribe = notification.subscribe(value => {
 			if (!!value) {
 				timeout = setTimeout(() => {
@@ -25,22 +26,7 @@
 {#if $notification}
 	<div
 		transition:fly={{ y: -100 }}
-		class="
-		fixed
-		top-[20px]
-		left-[50%]
-		-translate-x-[50%]
-		bg-white
-		text-primary
-		px-[20px]
-		py-[10px]
-		rounded-[200px]
-		select-none
-		empty:hidden
-		shadow-xl
-		ring-1
-		ring-primary
-		"
+		class="fixed top-[20px] left-[50%] -translate-x-[50%] bg-white text-primary px-[20px] py-[10px] rounded-[200px] select-none empty:hidden shadow-xl ring-1 ring-primary"
 	>
 		{$notification}
 	</div>

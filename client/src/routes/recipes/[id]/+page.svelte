@@ -3,7 +3,8 @@
 
 	export let data = {};
 
-	const ingredients = data.ingredients;
+    const { ingredients } = data;
+
 	const total = {
 		'Calories': ingredients.reduce((a, b) => a + b.calories, 0),
 		'Protein': ingredients.reduce((a, b) => a + b.protein, 0),
@@ -14,9 +15,9 @@
 	};
 </script>
 
-<div class="grid grid-cols-2 gap-4 mb-20">
+<div class="mb-20 grid grid-cols-2 gap-4">
 	<h2>{data.name}</h2>
-	<div class="p-8 my-4 bg-gray inline-flex flex-col gap-4">
+	<div class="inline-flex flex-col p-8 my-4 bg-gray gap-4">
 		<h2>Summary</h2>
 		<div class="grid grid-cols-3 gap-4">
 			{#each Object.entries(total) as [key, value]}

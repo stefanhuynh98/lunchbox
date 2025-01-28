@@ -1,6 +1,5 @@
 <script>
-	import { createEventDispatcher } from "svelte";
-	import * as Icon from 'svelticon';
+	import { createEventDispatcher } from 'svelte';
 
 	export let variant = 'default';
 

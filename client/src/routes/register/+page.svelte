@@ -2,7 +2,6 @@
 	import { PUBLIC_BACKEND_URL } from '$env/static/public';
 	import { goto } from '$app/navigation';
 	import { Button, Message } from '$ui';
-	import { Input } from '$ui/input';
 
 	let username;
 	let password;
@@ -27,7 +26,7 @@
 
 		if (body.error === 'user_conflict') {
 			error = `A user with username "${username}" already exists.`
-		}
+        }
 	}
 </script>
 
@@ -38,19 +37,19 @@
 	{/if}
 	<form on:submit={register} class="items-start">
 		<div class="w-full gap-4">
-			<Input
+			<input
 				type="text"
 				placeholder="Username"
 				bind:value={username}
 				required
 			/>
-			<Input
+			<input
 				type="password"
 				placeholder="Password"
 				bind:value={password}
 				required
 			/>
-			<Input
+			<input
 				type="password"
 				placeholder="Repeat password"
 				bind:value={passwordRepeat}

@@ -1,11 +1,8 @@
 <script>
 	import { modal } from '$lib/stores';
 	import { Button } from '$ui';
-
 	import { FoodTable } from '$ui/parts';
 	import { CreateFood } from '$ui/forms';
-
-	export let data = {};
 </script>
 
 <div class="flex justify-between">

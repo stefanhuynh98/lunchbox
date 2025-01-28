@@ -3,7 +3,6 @@
 	import { getRecipes } from '$lib/backend';
 	import { modal, notification } from '$lib/stores';
 	import { Button } from '$ui';
-	import { RecipePicker } from '$ui/parts';
 	import { Select } from '$ui/input';
 
 	let recipes = null;
@@ -26,20 +25,24 @@
 			$notification = 'Changes to meal saved successfully';
 		}
 	}
+
+    function onSearch(query) {
+        recipes = getRecipes({ query })
+    }
 </script>
 
 <form on:submit={onSubmit}>
-	<h2>Edit meal</h2>
-	<div class="flex flex-col gap-2">
-		<label for="date">Date</label>
-		<input id="date" type="date" bind:value={date} />
-	</div>
-	<Select
-		bind:options={recipes}
-		on:search={(query) => recipes = getRecipes({ query })}
-		queryable
-	/>
-	<div class="grow items-start mt-[100px]">
-		<Button>Save changes</Button>
-	</div>
+    <h2>Edit meal</h2>
+    <div class="flex flex-col gap-2">
+        <label for="date">Date</label>
+        <input id="date" type="date" bind:value={date} />
+    </div>
+    <Select
+        bind:options={recipes}
+        on:search={(query) => onSearch(query)}
+        queryable
+    />
+    <div class="grow items-start mt-[100px]">
+        <Button>Save changes</Button>
+    </div>
 </form>

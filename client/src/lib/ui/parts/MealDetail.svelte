@@ -52,9 +52,9 @@
 	<span class="opacity-70">({type})</span>
 </h4>
 <h2>{recipeName}</h2>
-<ol class="flex flex-col gap-4 my-12">
+<ol class="flex flex-col my-12 gap-4">
 	{#each [...Array(4)] as _, i}
-		<li class="flex gap-8 leading-loose">
+		<li class="flex leading-loose gap-8">
 			<span class="w-[150px] opacity-50">Step {i+1}</span>
 			Consectetur nihil ea recusandae adipisci sunt Omnis natus explicabo.
 			Consectetur nihil ea recusandae adipisci sunt Omnis natus explicabo.

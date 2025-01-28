@@ -1,11 +1,11 @@
 import { Router } from 'express';
 import { validateBody, validateQuery } from '@/lib/middleware';
-import db, { select } from '@/lib/db';
+import db from '@/lib/db';
 import { CreateRecipeBody, Query } from '@/lib/joi-types';
 
 const r = Router();
 
-r.get('/', validateQuery(Query), async (req, res, next) => {
+r.get('/', validateQuery(Query), async (req, res, _next) => {
 	const {
 		query,
 		page,
@@ -50,7 +50,7 @@ r.get('/', validateQuery(Query), async (req, res, next) => {
 	res.json(recipes);
 });
 
-r.get('/:id', async (req, res, next) => {
+r.get('/:id', async (req, res, _next) => {
 	const { id } = req.params;
 	let stmt = `
 		SELECT
@@ -86,6 +86,7 @@ r.post('/', validateBody(CreateRecipeBody), async (req, res, next) => {
 	try {
 		if (req.body.ingredients?.length > 0) {
 			await db.execute('START TRANSACTION;');
+
 			const insertRecipeSql = 'INSERT INTO recipes (name, user_id) VALUES (?, ?);';
 			const [insertRecipeResult] = await db.execute(insertRecipeSql, [req.body.name, req.userId]);
 			const recipeId = insertRecipeResult.insertId;
@@ -96,6 +97,7 @@ r.post('/', validateBody(CreateRecipeBody), async (req, res, next) => {
 			}
 
 			await db.execute('COMMIT;');
+
 			res.sendStatus(201);
 		} else {
 			await db.execute('INSERT INTO recipes (name, user_id) VALUES (?, ?)', [req.body.name, req.userId]);

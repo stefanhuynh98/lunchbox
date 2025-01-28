@@ -5,7 +5,7 @@ import { CreateFoodBody, Query } from '@/lib/joi-types';
 
 const r = Router();
 
-r.get('/', validateQuery(Query), async (req, res, next) => {
+r.get('/', validateQuery(Query), async (req, res, _next) => {
 	const {
 		query,
 		page,
@@ -30,11 +30,11 @@ r.get('/', validateQuery(Query), async (req, res, next) => {
 
 r.post('/', validateBody(CreateFoodBody), async (req, res, next) => {
 	try {
-		const result = await db.query('INSERT INTO foods SET ?', req.body);
-		res.sendStatus(201);
-	} catch (err) {
-		next(err);
-	}
+        await db.query('INSERT INTO foods SET ?', req.body);
+        res.sendStatus(201);
+    } catch (err) {
+        next(err);
+    }
 });
 
 export default r;

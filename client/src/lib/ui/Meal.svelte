@@ -28,7 +28,7 @@
 </script>
 
 <div
-	class="flex flex-col w-full h-full p-4 bg-gray justify-between select-none cursor-pointer hover:opacity-80 hover:ring-1 ring-primary text-sm"
+	class="flex flex-col justify-between w-full h-full p-4 text-sm cursor-pointer select-none bg-gray hover:opacity-80 hover:ring-1 ring-primary"
 	on:click={onClick}
 >
 	<b class="text-sm">{recipe_name}</b>

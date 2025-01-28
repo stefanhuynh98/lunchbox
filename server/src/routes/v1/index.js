@@ -11,7 +11,7 @@ r.use('/auth', auth);
 r.use('/recipes', authorize, recipes);
 r.use('/meals', authorize, meals);
 r.use('/foods', authorize, foods);
-r.use('/ping', authorize, (req, res, next) => {
+r.use('/ping', authorize, (_req, res, _next) => {
 	res.send('pong!');
 });
 

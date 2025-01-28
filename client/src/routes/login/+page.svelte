@@ -2,7 +2,6 @@
 	import { PUBLIC_BACKEND_URL } from '$env/static/public';
 	import { goto } from '$app/navigation';
 	import { Button, Message } from '$ui';
-	import { Input } from '$ui/input';
 
 	let username;
 	let password;
@@ -36,18 +35,20 @@
 
 <div class="w-[500px] mx-auto">
 	<h1 class="mb-8">Login</h1>
+
 	{#if error}
 		<Message variant="error" text={error} />
 	{/if}
+
 	<form on:submit={login} class="items-start">
-		<div class="w-full flex gap-4">
-			<Input
+		<div class="flex w-full gap-4">
+			<input
 				type="text"
 				placeholder="Username"
 				bind:value={username}
 				required
 			/>
-			<Input
+			<input
 				type="password"
 				placeholder="Password"
 				bind:value={password}

@@ -14,7 +14,7 @@
 	export let data = {};
 </script>
 
-<div class="grid grid-cols-7 mt-8 gap-4">
+<div class="mt-8 grid grid-cols-7 gap-4">
 	{#each data.week as { day, breakfast, lunch, dinner }}
 		<div class="flex flex-col gap-4">
 			{dayString(day)}
