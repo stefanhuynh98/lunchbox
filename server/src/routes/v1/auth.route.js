@@ -18,7 +18,7 @@ r.post('/register', validateBody(RegisterBody), async (req, res, next) => {
 		}
 
 		const hash = await Bun.password.hash(password, {
-			algorithm: "bcrypt",
+			algorithm: "argon2id",
 			cost: 10,
 		});
 
