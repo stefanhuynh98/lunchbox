@@ -90,6 +90,7 @@ r.post('/', validateBody(CreateRecipeBody), async (req, res, next) => {
 			const insertRecipeSql = 'INSERT INTO recipes (name, user_id) VALUES (?, ?);';
 			const [insertRecipeResult] = await db.execute(insertRecipeSql, [req.body.name, req.userId]);
 			const recipeId = insertRecipeResult.insertId;
+
 			const sql = 'INSERT INTO ingredients (food_id, recipe_id, amount) VALUES (?, ?, ?);';
 
 			for (const { food_id, amount } of req.body.ingredients) {

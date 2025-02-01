@@ -1,8 +1,6 @@
 <script>
-	import { writable } from 'svelte/store';
 	import { Search } from '$ui/input';
 	import { getRecipes } from '$lib/backend';
-    import { onMount } from 'svelte';
 
 	export let recipe = null;
 

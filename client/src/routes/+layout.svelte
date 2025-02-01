@@ -1,13 +1,11 @@
 <script>
 	import '../app.css';
-	import { fly } from 'svelte/transition';
-	import { onMount } from 'svelte';
-	import { modal, notification } from '$lib/stores';
+	import { modal } from '$lib/stores';
 	import { Navbar, Modal, Notification } from '$ui';
 </script>
 
 <Navbar />
-<div class="xl:container px-10 mx-auto mt-[45px]">
+<div class="xl:container px-10 mx-auto my-[45px]">
 	<slot />
 </div>
 <Modal store={modal} />

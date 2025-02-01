@@ -1,5 +1,7 @@
 <script>
 	import { Meal } from '$ui';
+	import { modal } from '$lib/stores';
+	import { AddMeal } from '$lib/ui/forms';
 
 	const dayString = (day) => {
 		return day
@@ -9,6 +11,10 @@
 		day
 			.toLocaleDateString('nl-NL', { day: 'numeric', weekday: 'long' })
 			.slice(1)
+	}
+
+	function openCreateMealModal(date, type) {
+		$modal.content = AddMeal;
 	}
 
 	export let data = {};
@@ -29,13 +35,20 @@
 				<div class="
 					flex
 					gap-4
-					empty:border-[1px]
-					empty:border-black/20
+					border-[1px]
+					border-black/20
 					aspect-square
 					items-center
 					justify-center
+					text-transparent
+					hover:text-black
+					hover:bg-neutral-100
+					cursor-pointer
 					"
-				/>
+					on:click={() => openCreateMealModal(day.day, type)}
+				>
+					Add {type}
+				</div>
 			{/if}
 		{/each}
 	{/each}

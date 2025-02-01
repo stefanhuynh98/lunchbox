@@ -23,8 +23,7 @@
 @layer components {
 	body { @apply
 		font-default
-		text-std
-		overflow-hidden;
+		text-std;
 	}
 
 	h1 { @apply

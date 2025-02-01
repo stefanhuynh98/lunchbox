@@ -1,6 +1,5 @@
 <script>
 	import { modal } from '$lib/stores';
-	import { EditMealForm } from '$ui/forms';
 	import { MealDetail } from '$ui/parts';
 
 	export let id = null;
@@ -32,7 +31,7 @@
 	on:click={onClick}
 >
 	<b class="text-sm">{recipe_name}</b>
-	<ul class="flex flex-col font-mono">
+	<ul class="flex flex-col font-mono text-xs">
 		<li>{calories}kcal</li>
 		<li>{protein}g protein</li>
 		<li>{carbs}g carbs</li>
