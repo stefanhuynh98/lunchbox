@@ -1,5 +1,4 @@
 <script>
-	import { fly } from 'svelte/transition';
 	import { createEventDispatcher } from 'svelte';
 
 	export let label = null;
@@ -35,7 +34,10 @@
 	<button class="w-[200px] h-full px-4 bg-gray text-xs" on:click={reset}>
 		{label}
 	</button>
-	<button class="group flex w-[40px] items-center justify-center bg-gray hover:bg-primary" on:click={increment}>
+	<button
+		class="group flex w-[40px] items-center justify-center bg-gray hover:bg-primary"
+		on:click={increment}
+	>
 		<img
 			src="/arrow-down.svg"
 			class="-rotate-90 group-hover:invert"

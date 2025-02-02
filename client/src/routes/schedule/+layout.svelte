@@ -12,7 +12,6 @@
 	$: lastDay = $page.data.week[6].day;
 	$: weekLabel = `${firstDay.toLocaleDateString('nl-NL', dateOptions)} - ${lastDay.toLocaleDateString('nl-NL', dateOptions)}`;
 	
-	let offset = getWeekOffset($page.data.week[0].day);
 	let date = new Date(
 		$page.params.year,
 		$page.params.month-1,
@@ -34,22 +33,12 @@
 		rehydrate();
 	}
 
-	function getWeekOffset(target) {
-		const today = new Date();
-		const msPerDay = 24 * 60 * 60 * 1000;
-		const msPerWeek = 7 * msPerDay;
-		const diff = target.getTime() - today.getTime();
-		const offset = Math.ceil(diff / msPerWeek);
-
-		return offset;
-	}
-
 	function rehydrate() {
 		goto(`/schedule/${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()}`);
 	}
 </script>
 
-<div class="flex items-top justify-between">
+<div class="flex justify-between items-top">
 	<div class="flex flex-col gap-4">
 		<h1>Your weekly schedule</h1>
 		<h3>{weekLabel}</h3>

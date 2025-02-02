@@ -16,7 +16,7 @@ export async function load({ params, fetch }) {
 	const to = week[6].toISOString();
 	const search = new URLSearchParams({ from, to }).toString();
 	const meals = await fetch(`/api/meals?${search}`)
-        .then(res => res.json());
+		.then(res => res.json());
 
 	week = week.map(day => {
 		const breakfast = meals.find(findMeal('breakfast', day));
