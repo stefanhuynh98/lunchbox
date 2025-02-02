@@ -26,9 +26,9 @@
 </script>
 
 <div class="w-full bg-primary text-white pt-[35px]">
-	<div class="xl:container mx-auto px-10">
+	<div class="px-10 mx-auto xl:container">
 		<div class="text-lg">Lunchbox</div>
-		<div class="flex justify-between items-end">
+		<div class="flex items-end justify-between">
 			<div class="flex mt-[26px] gap-[32px] pb-[17px] relative">
 				{#each navItems as item, i}
 					<a
