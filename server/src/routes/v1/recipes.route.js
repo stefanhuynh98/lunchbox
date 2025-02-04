@@ -98,8 +98,6 @@ r.post('/', validateBody(CreateRecipeBody), async (req, res, next) => {
 			}
 
 			await db.execute('COMMIT;');
-
-			res.sendStatus(201);
 		} else {
 			await db.execute('INSERT INTO recipes (name, user_id) VALUES (?, ?)', [req.body.name, req.userId]);
 		}
