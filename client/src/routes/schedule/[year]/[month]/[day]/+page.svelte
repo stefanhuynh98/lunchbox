@@ -3,14 +3,10 @@
 	import { modal } from '$lib/stores';
 	import { AddMeal } from '$lib/ui/forms';
 
-	const dayString = (day) => {
-		return day
-			.toLocaleDateString('nl-NL', { day: 'numeric', weekday: 'long' })
-			.slice(0, 1)
-			.toUpperCase() +
-		day
-			.toLocaleDateString('nl-NL', { day: 'numeric', weekday: 'long' })
-			.slice(1)
+	function dayString(day) {
+		let string = day.toLocaleDateString('nl-NL', { day: 'numeric', weekday: 'long' });
+
+		return string[0].toUpperCase() + string.slice(1);
 	}
 
 	function openCreateMealModal(date, type) {
